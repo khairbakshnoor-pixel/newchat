@@ -5,68 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<script
-  id="retell-widget"
-  src="https://dashboard.retellai.com/retell-widget-v2.js"
-  type="module"
-  data-public-key="public_key_c7d00c4b77230120c528a"
-  data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
-  data-title="Chat with Alex"
-  data-bot-name="Alex"
-  data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
-  data-popup-message="Hi! Need help with your building? Chat with Alex."
-  data-show-ai-popup="true"
-  data-show-ai-popup-time="4"
-  data-auto-open="false"
-  data-theme-color="#0b3d59"
-  data-color="#0b3d59"
-></script>
-
-<script>
-  (() => {
-    const styleWidget = () => {
-      const shadowRoot = [...document.querySelectorAll('*')]
-        .map((element) => element.shadowRoot)
-        .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
-      if (!shadowRoot) return false;
-      if (shadowRoot.getElementById('gb-widget-style')) return true;
-
-      const style = document.createElement('style');
-      style.id = 'gb-widget-style';
-      style.textContent = `
-        img[alt="Chat with Alex"] {
-          width: 52px !important;
-          height: 52px !important;
-          object-fit: contain !important;
-          border-radius: 6px !important;
-        }
-        img[alt="Alex"] {
-          width: 32px !important;
-          height: 32px !important;
-          object-fit: contain !important;
-          border-radius: 5px !important;
-        }
-        a[href*="retellai.com"] {
-          display: none !important;
-        }
-        a[href*="retellai.com"]::before {
-          display: none !important;
-        }
-        div:has(> a[href*="retellai.com"]) {
-          display: none !important;
-        }
-      `;
-      shadowRoot.appendChild(style);
-      shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
-      return true;
-    };
-
-    const widgetInterval = setInterval(() => {
-      if (styleWidget()) clearInterval(widgetInterval);
-    }, 100);
-  })();
-</script>
 <body>
-  
+
+  <script
+    id="retell-widget"
+    src="https://dashboard.retellai.com/retell-widget-v2.js"
+    type="module"
+    data-public-key="public_key_c7d00c4b77230120c528a"
+    data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
+    data-title="Chat with Alex"
+    data-bot-name="Alex"
+    data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
+    data-popup-message="Hi! Need help with your building? Chat with Alex."
+    data-show-ai-popup="true"
+    data-show-ai-popup-time="4"
+    data-auto-open="false"
+    data-theme-color="#0b3d59"
+    data-color="#0b3d59"
+  ></script>
+
+  <script>
+    (() => {
+      const styleWidget = () => {
+        const shadowRoot = [...document.querySelectorAll('*')]
+          .map((element) => element.shadowRoot)
+          .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
+        if (!shadowRoot) return false;
+        if (shadowRoot.getElementById('gb-widget-style')) return true;
+
+        const style = document.createElement('style');
+        style.id = 'gb-widget-style';
+        style.textContent = `
+          img[alt="Chat with Alex"] {
+            width: 52px !important;
+            height: 52px !important;
+            object-fit: contain !important;
+            border-radius: 6px !important;
+          }
+          img[alt="Alex"] {
+            width: 32px !important;
+            height: 32px !important;
+            object-fit: contain !important;
+            border-radius: 5px !important;
+          }
+          a[href*="retellai.com"] {
+            display: none !important;
+          }
+          a[href*="retellai.com"]::before {
+            display: none !important;
+          }
+          div:has(> a[href*="retellai.com"]) {
+            display: none !important;
+          }
+        `;
+        shadowRoot.appendChild(style);
+        shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
+        return true;
+      };
+
+      const widgetInterval = setInterval(() => {
+        if (styleWidget()) clearInterval(widgetInterval);
+      }, 100);
+    })();
+  </script>
+
 </body>
 </html>
