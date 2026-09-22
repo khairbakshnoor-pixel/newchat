@@ -24,50 +24,5 @@
     data-color="#0b3d59"
   ></script>
 
-  <script>
-    (() => {
-      const styleWidget = () => {
-        const shadowRoot = [...document.querySelectorAll('*')]
-          .map((element) => element.shadowRoot)
-          .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
-        if (!shadowRoot) return false;
-        if (shadowRoot.getElementById('gb-widget-style')) return true;
-
-        const style = document.createElement('style');
-        style.id = 'gb-widget-style';
-        style.textContent = `
-          img[alt="Chat with Alex"] {
-            width: 52px !important;
-            height: 52px !important;
-            object-fit: contain !important;
-            border-radius: 6px !important;
-          }
-          img[alt="Alex"] {
-            width: 32px !important;
-            height: 32px !important;
-            object-fit: contain !important;
-            border-radius: 5px !important;
-          }
-          a[href*="retellai.com"] {
-            display: none !important;
-          }
-          a[href*="retellai.com"]::before {
-            display: none !important;
-          }
-          div:has(> a[href*="retellai.com"]) {
-            display: none !important;
-          }
-        `;
-        shadowRoot.appendChild(style);
-        shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
-        return true;
-      };
-
-      const widgetInterval = setInterval(() => {
-        if (styleWidget()) clearInterval(widgetInterval);
-      }, 100);
-    })();
-  </script>
-
 </body>
 </html>
