@@ -1,355 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>G. Batista Engineering & Construction</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f4f6f8;
-      color: #1b2a33;
-    }
-
-    header {
-      background: linear-gradient(135deg, #0b3d59, #145374);
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.2rem;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px 120px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 25px 30px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      color: #0b3d59;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #8a99a1;
-      font-size: 0.85rem;
-    }
-
-    .chat-launcher {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 1000;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #0b3d59, #145374);
-      color: #fff;
-      padding: 16px 20px;
-      font-size: 15px;
-      font-weight: 700;
-      box-shadow: 0 15px 30px rgba(11, 61, 89, 0.35);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .chat-launcher:hover {
-      transform: translateY(-2px);
-    }
-
-    .chat-widget {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: min(380px, calc(100vw - 24px));
-      height: 560px;
-      background: #f3f5f7;
-      border: 1px solid rgba(11, 61, 89, 0.12);
-      border-radius: 22px 22px 20px 20px;
-      box-shadow: 0 25px 60px rgba(14, 28, 38, 0.22);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 999;
-      transform: translateY(30px) scale(0.96);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s ease;
-    }
-
-    .chat-widget.open {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-
-    .chat-header {
-      background: linear-gradient(135deg, #0b3d59, #145374);
-      color: white;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chat-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .chat-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.14);
-      display: grid;
-      place-items: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .chat-close {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .chat-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 18px 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: #eef2f5;
-    }
-
-    .message {
-      max-width: 82%;
-      padding: 12px 14px;
-      border-radius: 18px;
-      font-size: 0.96rem;
-      line-height: 1.45;
-      word-wrap: break-word;
-    }
-
-    .message.bot {
-      background: #ffffff;
-      color: #1f2b34;
-      border-top-left-radius: 6px;
-      align-self: flex-start;
-    }
-
-    .message.user {
-      background: linear-gradient(135deg, #0b3d59, #1a567e);
-      color: #fff;
-      border-top-right-radius: 6px;
-      align-self: flex-end;
-    }
-
-    .chat-input-row {
-      display: flex;
-      gap: 10px;
-      padding: 12px 14px 14px;
-      background: white;
-      border-top: 1px solid rgba(11, 61, 89, 0.08);
-    }
-
-    .chat-input {
-      flex: 1;
-      border: 1px solid rgba(11, 61, 89, 0.15);
-      border-radius: 999px;
-      padding: 12px 16px;
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    .chat-send {
-      border: none;
-      background: linear-gradient(135deg, #0b3d59, #145374);
-      color: white;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    @media (max-width: 540px) {
-      .chat-widget {
-        right: 10px;
-        bottom: 10px;
-        width: calc(100vw - 20px);
-        height: 72vh;
-      }
-
-      .chat-launcher {
-        right: 18px;
-        bottom: 18px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+<script
+  id="retell-widget"
+  src="https://dashboard.retellai.com/retell-widget-v2.js"
+  type="module"
+  data-public-key="public_key_c7d00c4b77230120c528a"
+  data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
+  data-title="Chat with Alex"
+  data-bot-name="Alex"
+  data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
+  data-popup-message="Hi! Need help with your building? Chat with Alex."
+  data-show-ai-popup="true"
+  data-show-ai-popup-time="4"
+  data-auto-open="false"
+  data-theme-color="#0b3d59"
+  data-color="#0b3d59"
+></script>
+
+<script>
+  (() => {
+    const styleWidget = () => {
+      const shadowRoot = [...document.querySelectorAll('*')]
+        .map((element) => element.shadowRoot)
+        .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
+      if (!shadowRoot) return false;
+      if (shadowRoot.getElementById('gb-widget-style')) return true;
+
+      const style = document.createElement('style');
+      style.id = 'gb-widget-style';
+      style.textContent = `
+        img[alt="Chat with Alex"] {
+          width: 52px !important;
+          height: 52px !important;
+          object-fit: contain !important;
+          border-radius: 6px !important;
+        }
+        img[alt="Alex"] {
+          width: 32px !important;
+          height: 32px !important;
+          object-fit: contain !important;
+          border-radius: 5px !important;
+        }
+        a[href*="retellai.com"] {
+          display: none !important;
+        }
+        a[href*="retellai.com"]::before {
+          display: none !important;
+        }
+        div:has(> a[href*="retellai.com"]) {
+          display: none !important;
+        }
+      `;
+      shadowRoot.appendChild(style);
+      shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
+      return true;
+    };
+
+    const widgetInterval = setInterval(() => {
+      if (styleWidget()) clearInterval(widgetInterval);
+    }, 100);
+  })();
+</script>
 <body>
-  <header>
-    <h1>G. Batista Engineering & Construction</h1>
-    <p>Structural Engineering • Building Safety Inspections • SIRS • Concrete Repair — South Florida</p>
-  </header>
-
-  <div class="container">
-    <div class="card">
-      <h2>Talk to Alex</h2>
-      <p>
-        Alex is our AI assistant for general questions about engineering, building safety inspections,
-        SIRS, and concrete repair. Use the chat in the bottom-right corner to ask anything.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Our Services</h2>
-      <p>
-        Structural engineering assessments, building safety inspections, Structural Integrity Reserve Studies
-        (SIRS), concrete repair, and Owner's Representative services across Miami-Dade, Broward, and Palm Beach
-        counties.
-      </p>
-    </div>
-  </div>
-
-  <div id="chatWidget" class="chat-widget open" aria-live="polite">
-    <div class="chat-header">
-      <div class="chat-brand">
-        <div class="chat-badge">A</div>
-        <span>Alex</span>
-      </div>
-      <button class="chat-close" id="closeChat" aria-label="Close chat">×</button>
-    </div>
-
-    <div id="chatBody" class="chat-body">
-      <div class="message bot">Hello, this is Alex from G. Batista Engineering &amp; Construction. How can I assist you today?</div>
-    </div>
-
-    <div class="chat-input-row">
-      <input id="chatInput" class="chat-input" type="text" placeholder="Type your message..." />
-      <button id="sendBtn" class="chat-send" aria-label="Send message">➤</button>
-    </div>
-  </div>
-
-  <button id="chatLauncher" class="chat-launcher" type="button">Chat with Alex</button>
-
-  <footer>
-    &copy; 2026 G. Batista Engineering & Construction — askgbatista.com
-  </footer>
-
-  <script>
-    const chatWidget = document.getElementById('chatWidget');
-    const chatLauncher = document.getElementById('chatLauncher');
-    const chatBody = document.getElementById('chatBody');
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const closeChat = document.getElementById('closeChat');
-
-    function addMessage(text, sender) {
-      const msg = document.createElement('div');
-      msg.className = 'message ' + sender;
-      msg.textContent = text;
-      chatBody.appendChild(msg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function botReply(userText) {
-      const text = userText.toLowerCase();
-
-      if (text.includes('website') || text.includes('site') || text.includes('web')) {
-        return 'The website for G. Batista Engineering & Construction is https://askgbatista.com. If you want, I can also help with a contact or service inquiry.';
-      }
-
-      if (text.includes('sirs') || text.includes('reserve') || text.includes('inspection')) {
-        return 'We help with Structural Integrity Reserve Studies, building safety inspections, and engineering assessments for condominiums and commercial properties.';
-      }
-
-      if (text.includes('concrete') || text.includes('repair')) {
-        return 'Concrete repair services can include diagnosis, repair planning, and structural assessment to address deterioration and long-term durability.';
-      }
-
-      if (text.includes('engineering') || text.includes('structural')) {
-        return 'We provide structural engineering services, building assessments, and consultant support for property owners and associations.';
-      }
-
-      if (text.includes('hi') || text.includes('hello')) {
-        return 'Hello! I can help with engineering questions, inspections, SIRS, and concrete repair. What would you like to know?';
-      }
-
-      if (text.includes('contact') || text.includes('call') || text.includes('email')) {
-        return 'You can contact G. Batista Engineering & Construction through the website at https://askgbatista.com or by using the contact details on the page.';
-      }
-
-      return 'Thanks for your message. I can help with building safety inspections, SIRS, structural engineering, concrete repair, and general project questions.';
-    }
-
-    function sendMessage() {
-      const value = chatInput.value.trim();
-      if (!value) return;
-
-      addMessage(value, 'user');
-      chatInput.value = '';
-
-      setTimeout(() => {
-        addMessage(botReply(value), 'bot');
-      }, 400);
-    }
-
-    function openChat() {
-      chatWidget.classList.add('open');
-      chatLauncher.style.display = 'none';
-      setTimeout(() => chatInput.focus(), 150);
-    }
-
-    function closeChatPanel() {
-      chatWidget.classList.remove('open');
-      chatLauncher.style.display = 'inline-block';
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') sendMessage();
-    });
-
-    chatLauncher.addEventListener('click', openChat);
-    closeChat.addEventListener('click', closeChatPanel);
-
-    setTimeout(() => {
-      openChat();
-    }, 900);
-  </script>
+  
 </body>
 </html>
