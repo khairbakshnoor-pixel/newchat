@@ -47,6 +47,11 @@
         const style = document.createElement('style');
         style.id = 'gb-widget-style';
         style.textContent = `
+          /* Keep the open widget comfortably below the viewport edge. */
+          :host {
+            transform: translateY(18px) !important;
+          }
+
           /* Floating launcher with support label */
           button:has(img[alt="Support"]) {
             width: auto !important;
