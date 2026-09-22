@@ -47,6 +47,26 @@
         const style = document.createElement('style');
         style.id = 'gb-widget-style';
         style.textContent = `
+          /* Minimal floating launcher */
+          button:has(img[alt="Support"]) {
+            width: 68px !important;
+            height: 68px !important;
+            min-width: 68px !important;
+            padding: 3px !important;
+            border-radius: 50% !important;
+            background: #ffffff !important;
+            border: 2px solid #0b3d59 !important;
+            box-shadow: 0 10px 24px rgba(11, 61, 89, 0.22), 0 2px 5px rgba(0, 0, 0, 0.12) !important;
+            color: transparent !important;
+            font-size: 0 !important;
+            overflow: hidden !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+          }
+          button:has(img[alt="Support"]):hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 14px 28px rgba(11, 61, 89, 0.28), 0 3px 7px rgba(0, 0, 0, 0.14) !important;
+          }
+
           /* Launcher button (closed bubble) */
           img[alt="Support"],
           img[alt="Chat with Alex"],
@@ -58,7 +78,7 @@
             padding: 3px !important;
             background: #ffffff !important;
             border: 2px solid #ffffff !important;
-            box-shadow: 0 7px 22px rgba(11, 61, 89, 0.38), 0 2px 7px rgba(0, 0, 0, 0.16) !important;
+            box-shadow: none !important;
             box-sizing: border-box !important;
             transition: transform 0.2s ease, box-shadow 0.2s ease !important;
             cursor: pointer !important;
