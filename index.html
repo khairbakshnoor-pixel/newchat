@@ -23,7 +23,7 @@
     data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
     data-title="Chat with Alex"
     data-bot-name="Alex"
-    data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
+    data-logo-url="./image.png"
     data-popup-message="Hi! Need help with your building? Chat with Alex."
     data-show-ai-popup="true"
     data-show-ai-popup-time="4"
@@ -37,27 +37,34 @@
       const styleWidget = () => {
         const shadowRoot = [...document.querySelectorAll('*')]
           .map((element) => element.shadowRoot)
-          .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
+          .find((root) => root?.querySelector('img[alt="Support"], img[alt="Alex"], a[href*="retellai.com"]'));
         if (!shadowRoot) return false;
         if (shadowRoot.getElementById('gb-widget-style')) return true;
+
+        const launcherLogo = shadowRoot.querySelector('img[alt="Support"]');
+        if (launcherLogo) launcherLogo.src = new URL('./image.png', document.baseURI).href;
 
         const style = document.createElement('style');
         style.id = 'gb-widget-style';
         style.textContent = `
           /* Launcher button (closed bubble) */
-          img[alt="Chat with Alex"] {
+          img[alt="Support"],
+          img[alt="Chat with Alex"],
+          img[alt="Alex"] {
             width: 56px !important;
             height: 56px !important;
             object-fit: contain !important;
             border-radius: 50% !important;
-            padding: 10px !important;
+            padding: 5px !important;
             background: #ffffff !important;
             box-shadow: 0 6px 20px rgba(11, 61, 89, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
             box-sizing: border-box !important;
             transition: transform 0.2s ease, box-shadow 0.2s ease !important;
             cursor: pointer !important;
           }
-          img[alt="Chat with Alex"]:hover {
+          img[alt="Support"]:hover,
+          img[alt="Chat with Alex"]:hover,
+          img[alt="Alex"]:hover {
             transform: scale(1.08) !important;
             box-shadow: 0 8px 26px rgba(11, 61, 89, 0.45), 0 3px 8px rgba(0, 0, 0, 0.2) !important;
           }
@@ -67,8 +74,8 @@
             width: 36px !important;
             height: 36px !important;
             object-fit: contain !important;
-            border-radius: 8px !important;
-            padding: 3px !important;
+            border-radius: 9px !important;
+            padding: 2px !important;
             background: #ffffff !important;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12) !important;
             box-sizing: border-box !important;
