@@ -3,69 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>G. Batista Engineering & Construction — Chat</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+    }
+  </style>
 </head>
 <body>
   <script
-  id="retell-widget"
-  src="https://dashboard.retellai.com/retell-widget-v2.js"
-  type="module"
-  data-public-key="public_key_c7d00c4b77230120c528a"
-  data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
-  data-title="Chat with Alex"
-  data-bot-name="Alex"
-  data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
-  data-popup-message="Hi! Need help with your building? Chat with Alex."
-  data-show-ai-popup="true"
-  data-show-ai-popup-time="4"
-  data-auto-open="false"
-  data-theme-color="#0b3d59"
-  data-color="#0b3d59"
-></script>
+    id="retell-widget"
+    src="https://dashboard.retellai.com/retell-widget-v2.js"
+    type="module"
+    data-public-key="public_key_c7d00c4b77230120c528a"
+    data-agent-id="agent_e2202fe277ace5ed5adb2c1c6b"
+    data-title="Chat with Alex"
+    data-bot-name="Alex"
+    data-logo-url="https://askgbatista.com/wp-content/uploads/2023/11/G.Batista-logo-horizontal.png"
+    data-popup-message="Hi! Need help with your building? Chat with Alex."
+    data-show-ai-popup="true"
+    data-show-ai-popup-time="4"
+    data-auto-open="false"
+    data-theme-color="#0b3d59"
+    data-color="#0b3d59"
+  ></script>
 
-<script>
-  (() => {
-    const styleWidget = () => {
-      const shadowRoot = [...document.querySelectorAll('*')]
-        .map((element) => element.shadowRoot)
-        .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
-      if (!shadowRoot) return false;
-      if (shadowRoot.getElementById('gb-widget-style')) return true;
+  <script>
+    (() => {
+      const styleWidget = () => {
+        const shadowRoot = [...document.querySelectorAll('*')]
+          .map((element) => element.shadowRoot)
+          .find((root) => root?.querySelector('img[alt="Alex"], a[href*="retellai.com"]'));
+        if (!shadowRoot) return false;
+        if (shadowRoot.getElementById('gb-widget-style')) return true;
 
-      const style = document.createElement('style');
-      style.id = 'gb-widget-style';
-      style.textContent = `
-        img[alt="Chat with Alex"] {
-          width: 52px !important;
-          height: 52px !important;
-          object-fit: contain !important;
-          border-radius: 6px !important;
-        }
-        img[alt="Alex"] {
-          width: 32px !important;
-          height: 32px !important;
-          object-fit: contain !important;
-          border-radius: 5px !important;
-        }
-        a[href*="retellai.com"] {
-          display: none !important;
-        }
-        a[href*="retellai.com"]::before {
-          display: none !important;
-        }
-        div:has(> a[href*="retellai.com"]) {
-          display: none !important;
-        }
-      `;
-      shadowRoot.appendChild(style);
-      shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
-      return true;
-    };
+        const style = document.createElement('style');
+        style.id = 'gb-widget-style';
+        style.textContent = `
+          /* Launcher button (closed bubble) */
+          img[alt="Chat with Alex"] {
+            width: 56px !important;
+            height: 56px !important;
+            object-fit: contain !important;
+            border-radius: 50% !important;
+            padding: 10px !important;
+            background: #ffffff !important;
+            box-shadow: 0 6px 20px rgba(11, 61, 89, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+            box-sizing: border-box !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+            cursor: pointer !important;
+          }
+          img[alt="Chat with Alex"]:hover {
+            transform: scale(1.08) !important;
+            box-shadow: 0 8px 26px rgba(11, 61, 89, 0.45), 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+          }
 
-    const widgetInterval = setInterval(() => {
-      if (styleWidget()) clearInterval(widgetInterval);
-    }, 100);
-  })();
-</script>
+          /* Header logo inside the open chat window */
+          img[alt="Alex"] {
+            width: 36px !important;
+            height: 36px !important;
+            object-fit: contain !important;
+            border-radius: 8px !important;
+            padding: 3px !important;
+            background: #ffffff !important;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12) !important;
+            box-sizing: border-box !important;
+          }
+
+          /* Hide Retell branding link */
+          a[href*="retellai.com"] {
+            display: none !important;
+          }
+          a[href*="retellai.com"]::before {
+            display: none !important;
+          }
+          div:has(> a[href*="retellai.com"]) {
+            display: none !important;
+          }
+        `;
+        shadowRoot.appendChild(style);
+        shadowRoot.querySelector('a[href*="retellai.com"]')?.parentElement.style.setProperty('display', 'none', 'important');
+        return true;
+      };
+
+      const widgetInterval = setInterval(() => {
+        if (styleWidget()) clearInterval(widgetInterval);
+      }, 100);
+    })();
+  </script>
 </body>
 </html>
