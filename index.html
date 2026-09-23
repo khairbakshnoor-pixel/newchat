@@ -47,9 +47,41 @@
         const style = document.createElement('style');
         style.id = 'gb-widget-style';
         style.textContent = `
-          /* Keep the open widget comfortably below the viewport edge. */
+          /* Keep the whole widget (launcher + open chat window) safely inside
+             the page's own edge instead of sitting on top of it or floating
+             above the viewport. */
           :host {
-            transform: translateY(38px) !important;
+            right: 20px !important;
+            bottom: 20px !important;
+            transform: none !important;
+          }
+
+          /* On narrow screens, keep the open panel inside the safe viewport
+             width while preserving the desktop spacing and dimensions. */
+          @media (max-width: 600px) {
+            :host {
+              left: auto !important;
+              right: max(8px, env(safe-area-inset-right)) !important;
+              bottom: max(8px, env(safe-area-inset-bottom)) !important;
+              width: calc(100vw - 16px) !important;
+              max-width: calc(100vw - 16px) !important;
+              box-sizing: border-box !important;
+            }
+
+            :host > * {
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+
+            :host [style*="width"] {
+              width: min(400px, calc(100vw - 16px)) !important;
+              max-width: calc(100vw - 16px) !important;
+              box-sizing: border-box !important;
+            }
+
+            button:has(img[alt="Support"]) {
+              min-width: min(188px, 100%) !important;
+            }
           }
 
           /* Floating launcher with support label */
@@ -71,15 +103,16 @@
             box-shadow: 0 13px 27px rgba(11, 61, 89, 0.34), 0 3px 7px rgba(0, 0, 0, 0.14) !important;
           }
 
-          /* Launcher button (closed bubble) */
+          /* Launcher button (closed bubble) — sized so the logo image sits
+             fully inside the circle with breathing room, not cropped. */
           img[alt="Support"],
-          img[alt="Chat with Alex"],
-          img[alt="Alex"] {
-            width: 60px !important;
-            height: 60px !important;
+          img[alt="Chat with Alex"] {
+            width: 54px !important;
+            height: 54px !important;
             object-fit: contain !important;
+            object-position: center !important;
             border-radius: 50% !important;
-            padding: 3px !important;
+            padding: 6px !important;
             background: #ffffff !important;
             border: 2px solid #ffffff !important;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14) !important;
@@ -88,20 +121,20 @@
             cursor: pointer !important;
           }
           img[alt="Support"]:hover,
-          img[alt="Chat with Alex"]:hover,
-          img[alt="Alex"]:hover {
+          img[alt="Chat with Alex"]:hover {
             transform: scale(1.08) !important;
             box-shadow: 0 8px 26px rgba(11, 61, 89, 0.45), 0 3px 8px rgba(0, 0, 0, 0.2) !important;
           }
 
-          /* Header logo inside the open chat window */
+          /* Header logo inside the open chat window — square box, generous
+             padding, contain (not cover) so nothing gets cut off. */
           img[alt="Alex"] {
-            width: 50px !important;
-            height: 50px !important;
+            width: 40px !important;
+            height: 40px !important;
             object-fit: contain !important;
             object-position: center !important;
             border-radius: 8px !important;
-            padding: 0 !important;
+            padding: 4px !important;
             background: #ffffff !important;
             border: 1px solid rgba(11, 61, 89, 0.12) !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
